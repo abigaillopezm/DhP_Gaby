@@ -22,7 +22,7 @@ editor: visual
 ---
 ::: {.callout-tip}
 ## repositorio del trabajo
-![Puede visitarse el repositorio del trabajo en este link](https://github.com/abigaillopezm/DhP_Gaby.git)
+Puede visitarse el repositorio del trabajo en este [link](https://github.com/abigaillopezm/DhP_Gaby.git)
 :::
 
 # Sobre el área de estudio
@@ -31,7 +31,7 @@ editor: visual
 En esta sección se encuentra la información obtenida del análisis climático de la zona de estudio
 :::
 El área de estudio se ubica entre las coordenadas [insertar coordenadas del área de estudio], considerando como punto medio del dominio el Pico de Orizaba. Al hacer un conteo de las estaciones meteorológicas que se encuentran en la zona, se enoncontró la existencia de 106 de estas; de las cuales X se encuentran en el estado de Veracruz, X en Puebla y X en Tlaxcala. Su posición se muestra en el mapa 1.
-![Mapa de estaciones y ubicación del área de estudio](../data/AnalisisGeografico/Analisis_Geografico_estaciones%2Bubi.png)
+![Mapa de estaciones y ubicación del área de estudio](../data/AnalisisGeografico/Analisis_Geografico_estaciones%2Bubi.png){fig-align="center" width=70%}
 
 # Caracterización climática
 
@@ -40,14 +40,14 @@ Usando datos del INEGI, se hizo la caracterización climática obteniendo los re
 [^1]: El script con el que hicieron los mapas se encuentran en la sección de los [Anexos](#script-mapas-de-caracterización-climática)
 
 ## Tipos de clima 
-![Mapa de tipos de clima en la zona de estudio](../outputs/00.CLIMAS.png){fig-align="center" width=85%}
+![Mapa de tipos de clima en la zona de estudio](../outputs/00.CLIMAS.png){fig-align="center" width=70%}
 ![Mapa de tipos de clima por rango de humedad en la zona de estudio](../outputs/00.CLIM_HUM.png){fig-align="center" width=70%} 
 
 ## Edafología
-![Edafología de la zona de estudio](../outputs/00.EDAFO.png){fig-align="center" width=85%} 
+![Edafología de la zona de estudio](../outputs/00.EDAFO.png){fig-align="center" width=70%} 
 
 ## Hidrografía e hidrología 
-![Hidrografía y regiones hidrológicas de la zona de estudio](../outputs/00.HIDRO.png){fig-align="center"}
+![Hidrografía y regiones hidrológicas de la zona de estudio](../outputs/00.HIDRO.png){fig-align="center" width=70%}
 
 # Sobre los datos utilizados
 ::: {.callout-important collapse="true"}
