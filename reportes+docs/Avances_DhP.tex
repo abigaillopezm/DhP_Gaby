@@ -1,0 +1,524 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage[top=2cm,left=2.5cm,right=2.5cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{Poppins}
+  \setmonofont[Scale=0.85]{Courier New}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{HTML}{cccccc}}{}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, frame hidden, borderline west={3pt}{0pt}{shadecolor}, interior hidden, enhanced, boxrule=0pt, sharp corners]}{\end{tcolorbox}}\fi
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Avance en Trabajo Doctoral: Caracterización climática},
+  pdfauthor={AL},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Avance en Trabajo Doctoral: Caracterización climática}
+\author{AL}
+\date{2026-08-06}
+\begin{document}
+\maketitle
+
+
+\begin{tcolorbox}[enhanced jigsaw, breakable, left=2mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, leftrule=.75mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, bottomtitle=1mm, toprule=.15mm, titlerule=0mm, rightrule=.15mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{repositorio del trabajo}, colback=white, bottomrule=.15mm, coltitle=black]
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{Avances_DhP_files/mediabag/DhP_Gaby.git}}
+
+}
+
+\caption{Puede visitarse el repositorio del trabajo en este link}
+
+\end{figure}%
+
+\end{tcolorbox}
+
+\section{Sobre el área de estudio}\label{sobre-el-uxe1rea-de-estudio}
+
+\begin{tcolorbox}[enhanced jigsaw, breakable, left=2mm, arc=.35mm, colbacktitle=quarto-callout-important-color!10!white, colframe=quarto-callout-important-color-frame, leftrule=.75mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, bottomtitle=1mm, toprule=.15mm, titlerule=0mm, rightrule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Descripción de la sección}, colback=white, bottomrule=.15mm, coltitle=black]
+
+En esta sección se encuentra la información obtenida del análisis
+climático de la zona de estudio
+
+\end{tcolorbox}
+
+El área de estudio se ubica entre las coordenadas {[}insertar
+coordenadas del área de estudio{]}, considerando como punto medio del
+dominio el Pico de Orizaba. Al hacer un conteo de las estaciones
+meteorológicas que se encuentran en la zona, se enoncontró la existencia
+de 106 de estas; de las cuales X se encuentran en el estado de Veracruz,
+X en Puebla y X en Tlaxcala. Su posición se muestra en el mapa 1.
+\pandocbounded{\includegraphics[keepaspectratio]{../data/AnalisisGeografico/Analisis_Geografico_estaciones+ubi.png}}
+
+\section{Caracterización
+climática}\label{caracterizaciuxf3n-climuxe1tica}
+
+Usando datos del INEGI, se hizo la caracterización climática obteniendo
+los resultados que se se muestran a continuación\footnote{El script con
+  el que hicieron los mapas se encuentran en la sección de los
+  \hyperref[script-mapas-de-caracterizaciuxf3n-climuxe1tica]{Anexos}}.
+
+\subsection{Tipos de clima}\label{tipos-de-clima}
+
+\begin{center}
+\includegraphics[width=0.85\linewidth,height=\textheight,keepaspectratio]{../outputs/00.CLIMAS.png}
+\end{center}
+\begin{center}
+\includegraphics[width=0.7\linewidth,height=\textheight,keepaspectratio]{../outputs/00.CLIM_HUM.png}
+\end{center}
+
+\subsection{Edafología}\label{edafologuxeda}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,height=\textheight,keepaspectratio]{../outputs/00.EDAFO.png}
+
+}
+
+\caption{Edafología de la zona de estudio}
+
+\end{figure}%
+
+\subsection{Hidrografía e
+hidrología}\label{hidrografuxeda-e-hidrologuxeda}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{../outputs/00.HIDRO.png}}
+
+}
+
+\caption{Hidrografía y regiones hidrológicas de la zona de estudio}
+
+\end{figure}%
+
+\section{Sobre los datos utilizados}\label{sobre-los-datos-utilizados}
+
+\begin{tcolorbox}[enhanced jigsaw, breakable, left=2mm, arc=.35mm, colbacktitle=quarto-callout-important-color!10!white, colframe=quarto-callout-important-color-frame, leftrule=.75mm, opacityback=0, toptitle=1mm, opacitybacktitle=0.6, bottomtitle=1mm, toprule=.15mm, titlerule=0mm, rightrule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Descripción de la sección}, colback=white, bottomrule=.15mm, coltitle=black]
+
+En esta sección se encuentran los métodos y ajustes hehcos en los datos
+por analizar
+
+\end{tcolorbox}
+
+\subsection{Sobre los datos en malla (artículo
+Jaime)}\label{sobre-los-datos-en-malla-artuxedculo-jaime}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Se descargaron los datos de un año para hacer el análisis exploratorio
+  y planificar el flujo de trabajo
+\item
+  Se decidió unir los archivos tif a un solo archivo NetCDF con el fin
+  de poder optimizar el trabajo (Revisar los
+  \hyperref[scripts-de-trabajo-con-mallas-nc-y-tif]{anexos} para ver los
+  scripts con los que se hizo este trabajo).
+\item
+  Se hizo el ploteo exploratorio de la malla.
+\end{enumerate}
+
+\subsection{Sobre los datos del SMN}\label{sobre-los-datos-del-smn}
+
+Para poder tener la certeza de la validez de los datos antes trabajados,
+se hizo la comparación de los datos de precipitación y temperatura para
+10 puntos (estaciones) de la malla. Estas estaciones se describen en la
+Tabla 1
+
+\%\% insertar la tabla \%\%
+
+\section{Anexos}\label{anexos}
+
+\subsection{Script: mapas de caracterización
+climática}\label{script-mapas-de-caracterizaciuxf3n-climuxe1tica}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{\#Primero, fijar el directorio de trabajo}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"\textasciitilde{}/001\_DhPGaby\_v2/dhp\_gaby{-}1"}\NormalTok{)}
+
+\CommentTok{\#cargar las librerias}
+\FunctionTok{library}\NormalTok{(sf)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(RColorBrewer)}
+\FunctionTok{library}\NormalTok{(colorspace)}
+
+\CommentTok{\#Ruta de los datos y definición de variables}
+\NormalTok{path\_climas }\OtherTok{\textless{}{-}} \StringTok{"data/AnalisisGeografico/Climas\_1mgw/clima1mgw.shp"}
+\NormalTok{path\_climhum }\OtherTok{\textless{}{-}} \StringTok{"data/AnalisisGeografico/humed4mgw/humed4mgw.shp"}
+\NormalTok{path\_edafo }\OtherTok{\textless{}{-}} \StringTok{"data/AnalisisGeografico/edafologoia\_4mgw/edafo4mgw.shp"}
+\NormalTok{path\_rios }\OtherTok{\textless{}{-}} \StringTok{"data/AnalisisGeografico/Regiones{-}hidrologicas\_4mgw/hidro4mgw.shp"}
+\NormalTok{path\_hidro }\OtherTok{\textless{}{-}} \StringTok{"data/AnalisisGeografico/Regiones{-}hidrologicas\_250kgw/rh250kgw.shp"}
+\NormalTok{path\_suelo7 }\OtherTok{\textless{}{-}} \StringTok{"data/AnalisisGeografico/usv250s7gw\_INEGI\_SERIE7/usv250s7gw.shp"}
+\NormalTok{path\_pico }\OtherTok{\textless{}{-}} \StringTok{"data/z.AREA/Area\_Metodo/Poligono\_ANP\_Pico.shp"}
+\NormalTok{path\_estat }\OtherTok{\textless{}{-}} \StringTok{"data/AnalisisGeografico/DivisonEstatal\_dest23gw/dest23gw.shp"}
+\NormalTok{path\_domKML }\OtherTok{\textless{}{-}} \StringTok{"data/Dom\_50km.kml"}
+
+\NormalTok{climas }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(path\_climas)}
+\NormalTok{climhum }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(path\_climhum)}
+\NormalTok{edafo }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(path\_edafo)}
+\NormalTok{rios }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(path\_rios)}
+\NormalTok{hidro }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(path\_hidro)}
+\NormalTok{suelo7 }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(path\_suelo7)}
+\NormalTok{ANPpico }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(path\_pico)}
+\NormalTok{estat }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(path\_estat)}
+\CommentTok{\#suelo7v2 \textless{}{-} st\_make\_valid(suelo7) \#corrige error del shape de uso de suelo}
+\CommentTok{\#Errores por invalidez de datos}
+\NormalTok{dominio}\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(path\_domKML)}
+
+\CommentTok{\#ploteo de prueba}
+\FunctionTok{plot}\NormalTok{(edafo) }\CommentTok{\#plotea todas las cosas}
+
+\DocumentationTok{\#\#\#\#\#\#\#}
+\CommentTok{\# Recortar utilizando un kml (interseccionar)}
+\NormalTok{climas\_dom }\OtherTok{\textless{}{-}} \FunctionTok{st\_intersection}\NormalTok{(climas, dominio) }\CommentTok{\#CLIMA\_TIPO}
+\NormalTok{climhum\_dom }\OtherTok{\textless{}{-}} \FunctionTok{st\_intersection}\NormalTok{(climhum, dominio) }\CommentTok{\#TIPO}
+\NormalTok{edafo\_dom }\OtherTok{\textless{}{-}} \FunctionTok{st\_intersection}\NormalTok{(edafo, dominio) }\CommentTok{\#UNIDAD SUE}
+\NormalTok{rios\_dom }\OtherTok{\textless{}{-}} \FunctionTok{st\_intersection}\NormalTok{(rios, dominio) }\CommentTok{\#NOMRES}
+\NormalTok{hidro\_dom }\OtherTok{\textless{}{-}} \FunctionTok{st\_intersection}\NormalTok{(hidro, dominio) }\CommentTok{\#NOMBRE}
+\NormalTok{estat\_dom }\OtherTok{\textless{}{-}} \FunctionTok{st\_intersection}\NormalTok{(estat, dominio) }\CommentTok{\#}
+\CommentTok{\#suelo7\_dom \textless{}{-} st\_intersection(suelo7, dominio) \#corregir error de validez}
+
+\CommentTok{\#ploteo avanzado}
+\DocumentationTok{\#\#\#\#\#}
+\CommentTok{\#CLIMAS}
+\NormalTok{n\_clases }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(}\FunctionTok{unique}\NormalTok{(climas\_dom}\SpecialCharTok{$}\NormalTok{CLIMA\_TIPO))}
+\NormalTok{colores }\OtherTok{\textless{}{-}} \FunctionTok{qualitative\_hcl}\NormalTok{(n\_clases, }\AttributeTok{palette =} \StringTok{"Dark 3"}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ climas\_dom, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ CLIMA\_TIPO)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ANPpico) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \SpecialCharTok{{-}}\FloatTok{97.28}\NormalTok{, }\AttributeTok{y =} \FloatTok{19.05}\NormalTok{, }\AttributeTok{label =} \StringTok{"ANP"}\NormalTok{, }\AttributeTok{size =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =}\NormalTok{ colores) }\SpecialCharTok{+}
+  \FunctionTok{theme\_light}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{13}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Tipos de clima"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{xlab}\NormalTok{(}\StringTok{"Longitud"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Latitud"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Leyenda"}\NormalTok{,}
+       \AttributeTok{caption =} \StringTok{"Fuente: García (1998), CONABIO (2001).}
+\StringTok{       Climas de México, escala 1:1,000,000."}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{7}\NormalTok{, }\AttributeTok{color =} \StringTok{"gray40"}\NormalTok{, }\AttributeTok{face =} \StringTok{"italic"}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"outputs/00.CLIMAS.png"}\NormalTok{, }\AttributeTok{width =} \DecValTok{11}\NormalTok{, }\AttributeTok{height =} \DecValTok{8}\NormalTok{, }\AttributeTok{dpi =} \DecValTok{300}\NormalTok{)}
+
+\DocumentationTok{\#\#\#\#\#}
+\CommentTok{\# CLIMAS HUMEDAD}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ climhum\_dom, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ TIPO))}\SpecialCharTok{+} \CommentTok{\#nombre de la variable, se ve con head()}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ANPpico) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \SpecialCharTok{{-}}\FloatTok{97.28}\NormalTok{, }\AttributeTok{y =} \FloatTok{19.05}\NormalTok{, }\AttributeTok{label =} \StringTok{"ANP"}\NormalTok{, }\AttributeTok{size =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"BrBG"}\NormalTok{) }\SpecialCharTok{+}
+  \CommentTok{\#geom\_contour(data = estat\_dom, color = "white")}
+  \FunctionTok{theme\_light}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{13}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Tipos de clima por rango de humedad"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{xlab}\NormalTok{(}\StringTok{"Longitud"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Latitud"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Leyenda"}\NormalTok{,}
+       \AttributeTok{caption =} \StringTok{"Fuente: García (1990), Atlas Nacional de México.}
+\StringTok{       Rangos de humedad, escala 1:4,000,000 (UNAM, IGg)."}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{7}\NormalTok{, }\AttributeTok{color =} \StringTok{"gray40"}\NormalTok{, }\AttributeTok{face =} \StringTok{"italic"}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"outputs/00.CLIM\_HUM.png"}\NormalTok{, }\AttributeTok{width =} \DecValTok{11}\NormalTok{, }\AttributeTok{height =} \DecValTok{8}\NormalTok{, }\AttributeTok{dpi =} \DecValTok{300}\NormalTok{)}
+
+\DocumentationTok{\#\#\#\#\#}
+\CommentTok{\# EDAFOLOGIA}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ edafo\_dom, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ UNIDAD\_SUE))}\SpecialCharTok{+} \CommentTok{\#nombre de la variable, se ve con head()}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ANPpico) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \SpecialCharTok{{-}}\FloatTok{97.28}\NormalTok{, }\AttributeTok{y =} \FloatTok{19.05}\NormalTok{, }\AttributeTok{label =} \StringTok{"ANP"}\NormalTok{, }\AttributeTok{size =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Set3"}\NormalTok{) }\SpecialCharTok{+}
+  \CommentTok{\#geom\_contour(data = estat\_dom, color = "white")}
+  \FunctionTok{theme\_light}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{13}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Edafología"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{xlab}\NormalTok{(}\StringTok{"Longitud"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Latitud"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Leyenda"}\NormalTok{,}
+       \AttributeTok{caption =} \StringTok{"Fuente: SEMARNAP (1998). Mapa de suelos dominantes}
+\StringTok{       de la República Mexicana. Primera aproximación 1996,}
+\StringTok{       escala 1:4,000,000."}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{7}\NormalTok{, }\AttributeTok{color =} \StringTok{"gray40"}\NormalTok{, }\AttributeTok{face =} \StringTok{"italic"}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"outputs/00.EDAFO.png"}\NormalTok{, }\AttributeTok{width =} \DecValTok{11}\NormalTok{, }\AttributeTok{height =} \DecValTok{8}\NormalTok{, }\AttributeTok{dpi =} \DecValTok{300}\NormalTok{)}
+
+
+\DocumentationTok{\#\#\#\#\#}
+\CommentTok{\#CUENCAS y RIOS}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ hidro\_dom, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ NOMBRE))}\SpecialCharTok{+} \CommentTok{\#nombre de la variable, se ve con head()}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ANPpico) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \SpecialCharTok{{-}}\FloatTok{97.28}\NormalTok{, }\AttributeTok{y =} \FloatTok{19.05}\NormalTok{, }\AttributeTok{label =} \StringTok{"ANP"}\NormalTok{, }\AttributeTok{size =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{name =} \StringTok{"Dark2"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data=}\NormalTok{rios\_dom, }\AttributeTok{color =} \StringTok{"blue"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{geom\_sf\_text}\NormalTok{(}\AttributeTok{data =}\NormalTok{ rios\_dom, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ NOMBRES), }\AttributeTok{size =} \DecValTok{3}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_light}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{13}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Cuencas hidrológicas y ríos"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{xlab}\NormalTok{(}\StringTok{"Longitud"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Latitud"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Leyenda"}\NormalTok{, }
+      \AttributeTok{caption =} \StringTok{"Fuentes: CONAGUA (2009), Regiones Hidrológicas}
+\StringTok{      (escala 1:250,000). Maderey{-}R \& Torres{-}Ruata (1998), Hidrografía, }
+\StringTok{      Atlas Nacional de México (escala 1:4,000,000)."}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{7}\NormalTok{, }\AttributeTok{color =} \StringTok{"gray40"}\NormalTok{, }\AttributeTok{face =} \StringTok{"italic"}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"outputs/00.HIDRO.png"}\NormalTok{, }\AttributeTok{width =} \DecValTok{11}\NormalTok{, }\AttributeTok{height =} \DecValTok{8}\NormalTok{, }\AttributeTok{dpi =} \DecValTok{300}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{\texorpdfstring{Scripts de trabajo con mallas \emph{nc y
+}tif}{Scripts de trabajo con mallas nc y tif}}\label{scripts-de-trabajo-con-mallas-nc-y-tif}
+
+\subsubsection{Script: Conversión de archivos tif a
+NetCDF}\label{script-conversiuxf3n-de-archivos-tif-a-netcdf}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{mkdir}\NormalTok{ data/nc\_files51}
+\ControlFlowTok{for}\NormalTok{ file }\KeywordTok{in}\NormalTok{ data/1951/}\PreprocessorTok{*}\NormalTok{.tif}\KeywordTok{;} \ControlFlowTok{do}
+  \VariableTok{name}\OperatorTok{=}\VariableTok{$(}\FunctionTok{basename} \StringTok{"}\VariableTok{$file}\StringTok{"}\NormalTok{ .tif}\VariableTok{)}
+  \ExtensionTok{gdal\_translate} \AttributeTok{{-}of}\NormalTok{ netCDF }\StringTok{"}\VariableTok{$file}\StringTok{"} \StringTok{"data/nc\_files51/}\VariableTok{$\{name\}}\StringTok{.nc"}
+\ControlFlowTok{done}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Script: Corte de archivos tif al área de
+estudio}\label{script-corte-de-archivos-tif-al-uxe1rea-de-estudio}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{mkdir}\NormalTok{ data/clipped51}
+\ControlFlowTok{for}\NormalTok{ file }\KeywordTok{in}\NormalTok{ data/nc\_files51/}\PreprocessorTok{*}\NormalTok{.nc}\KeywordTok{;} \ControlFlowTok{do}
+  \ExtensionTok{cdo} \AttributeTok{{-}f}\NormalTok{ nc sellonlatbox,{-}98,95,17,20 }\StringTok{"}\VariableTok{$file}\StringTok{"} \StringTok{"data/clipped51/}\VariableTok{$(}\FunctionTok{basename} \VariableTok{$file)}\StringTok{"}
+\ControlFlowTok{done}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{\texorpdfstring{Script: unión de los archivos
+\texttt{*.nc} a uno solo
+(mergetime)}{Script: unión de los archivos *.nc a uno solo (mergetime)}}\label{script-uniuxf3n-de-los-archivos-.nc-a-uno-solo-mergetime}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\VariableTok{i}\OperatorTok{=}\NormalTok{0}
+\ControlFlowTok{for}\NormalTok{ file }\KeywordTok{in}\NormalTok{ precip1951}\PreprocessorTok{*}\NormalTok{.nc}\KeywordTok{;} \ControlFlowTok{do}
+  \VariableTok{date}\OperatorTok{=}\VariableTok{$(}\FunctionTok{date} \AttributeTok{{-}d} \StringTok{"1951{-}01{-}01 +}\VariableTok{$i}\StringTok{ days"}\NormalTok{ +\%Y{-}\%m{-}\%d}\VariableTok{)}
+  \ExtensionTok{cdo}\NormalTok{ settaxis,}\VariableTok{$\{date\}}\NormalTok{,00:00:00,1day }\StringTok{"}\VariableTok{$file}\StringTok{"} \StringTok{"fixed\_}\VariableTok{$file}\StringTok{"}
+  \KeywordTok{((}\VariableTok{i}\OperatorTok{++}\KeywordTok{))}
+\ControlFlowTok{done}
+\end{Highlighting}
+\end{Shaded}
+
+
+
+
+
+\end{document}
