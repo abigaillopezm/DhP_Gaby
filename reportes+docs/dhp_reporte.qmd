@@ -1,0 +1,87 @@
+---
+title: " Reportes de trabajo doctoral: caracterización climática del Río Jamapa"
+author: "Abigail López"
+format: pdf
+editor: visual
+---
+
+::: En este reporte de se hacen los escritos de cambios importantes en el uso de los datos o manejo de la información que se está usando en la caracterización :::
+
+------------------------------------------------------------------------
+
+::: callout-note
+**Artículo de referencia**\
+[Articulo BD tmin, precip, tmax](https://essd.copernicus.org/preprints/essd-2025-100/essd-2025-100.pdf "Artículo BD tmin, precip, tmax")
+
+**Descarga de datos**
+
+<https://figshare.com/collections/Mexico_s_High_Resolution_Climate_Database_MexHiResClimDB_daily_monthly_yearly_and_30_year_normals_of_precipitation_and_temperature_minimum_average_and_maximum_for_the_1951-2020_period_/7689428>
+:::
+
+------------------------------------------------------------------------
+
+::: callout-note
+# Objetivos de mayo y junio
+
+-   Leer los artículos de datos de referencia (Jaime ...)
+
+-   Evaluar la base de datos construida por Jaime H. para un año
+
+# Próximos pasos:
+
+-   Completar las series de datos desde 2020 hasta 2024
+:::
+
+------------------------------------------------------------------------
+
+## Upd. 02/06/25
+
+-   Se pasaron los scripts a la carpeta destinada
+
+-   Se elige abrir cada tif en Rstudio
+
+------------------------------------------------------------------------
+
+## Upd. 11/06/2025
+
+-   Se genera un nuevo flujo de trabajo para la limpieza de los tif: (todos usando CDO). El objetivo es unir los tif en un solo NetCDF para que sea mas facil su manejo, este estará recortado al área de estudio
+
+    1.  Recortar tif al área de estudio usando un shape
+
+        `{#Recorte de tif con shp .bash} mkdir clipped for file in data/1951/*.tif; do   gdalwarp -cutline data/Dom_50km.kml -crop_to_cutline -of GTiff "$file" "clipped/$(basename $file)" done`
+
+    2.  Convertir el tif recortado a formato NetCDF
+
+        `{#convertir tif a nc .bash} mkdir nc_files for file in clipped/*.tif; do   name=$(basename "$file" .tif)   gdal_translate -of netCDF "$file" "nc_files/${name}.nc" done`
+
+    3.  Fijar un eje de tiempo y unir los archivos nc a uno solo
+
+        \`\`\` {#Fijar eje de tiempo y unir .bash} cd nc_files i=0 for file in \*.nc; do date=$(date -d "1951-01-01 +$i days" +%Y-%m-%d) cdo settaxis,$date,00:00,1day "$file" "fixed\_\$file" ((i++)) done
+
+        cdo mergetime fixed\_\*.nc ../precip_1951.nc \`\`\`
+
+------------------------------------------------------------------------
+
+## Upd. 12/06
+
+-   Con el método probado ayer no hubo buenos resultados. Por lo que se iniciará al revés el proceso
+
+    -   Convertir tif a nc
+
+    -   Recortar al área que se quiere
+
+    -   Unir los nc convertidos
+
+------------------------------------------------------------------------
+
+## Upd. 13/06
+
+-   Se unieron los tif a uno solo usando el siguiente método:
+
+    -   Convertir tif a nc (Revisar script 02)
+
+    -   Recortar al área (cdo sellonlatbox)
+
+    -   Unir los nc a un solo archivo (primero fijar eje de tiempo, luego mergetime)
+
+-   Se abre en R, GrADS marca un error en el formato del tiempo
